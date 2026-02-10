@@ -1,0 +1,25 @@
+<div class="confirm-page">
+  <div class="confirm-card">
+    <h2 class="confirm-title">It looks like you're new to E-commerce.</h2>
+
+    <div class="confirm-email-row">
+      <span class="confirm-email">{{ email }}</span>
+      <button type="button" class="confirm-change" (click)="changeEmail()">Change</button>
+    </div>
+
+    <p class="confirm-subtitle">Let's create an account using your email.</p>
+
+    <div class="confirm-action">
+      <button class="primary-btn" type="button" (click)="proceedToRegister()">
+        Proceed with creating an account.
+      </button>
+    </div>
+
+    <div class="confirm-footer">
+      <p>Are you already a customer?</p>
+      <button class="link-btn" type="button" (click)="loginWithOther()">
+        Log in with a different email or mobile phone number.
+      </button>
+    </div>
+  </div>
+</div>

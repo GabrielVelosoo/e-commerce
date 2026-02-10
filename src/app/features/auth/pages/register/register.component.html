@@ -1,0 +1,99 @@
+<div class="register-page">
+  <div class="register-container">
+    <h1 class="register-title">Create account</h1>
+
+    <form #form="ngForm" (ngSubmit)="register(form)" novalidate class="register-form">
+
+      <div class="register-group">
+        <label for="email">Enter a email address.</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          [(ngModel)]="registerData.email"
+          required
+        />
+      </div>
+
+      <div class="register-group">
+        <label for="firstName">Your name</label>
+        <input
+          id="firstName"
+          name="firstName"
+          type="text"
+          placeholder="First name"
+          [(ngModel)]="registerData.firstName"
+          required
+        />
+      </div>
+
+      <div class="register-group">
+        <label for="lastName">Your last name</label>
+        <input
+          id="lastName"
+          name="lastName"
+          type="text"
+          placeholder="Last name"
+          [(ngModel)]="registerData.lastName"
+          required
+        />
+      </div>
+
+      <div class="register-group">
+        <label for="password">Password (at least 6 characters)</label>
+
+        <div class="password-row">
+          <input
+            id="password"
+            name="password"
+            [type]="showPassword ? 'text' : 'password'"
+            [(ngModel)]="registerData.password"
+            minlength="6"
+            required
+            autocomplete="new-password"
+          />
+          <button type="button" class="toggle-pass" (click)="togglePassword()">
+            <i class="fa-solid" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="password-info">
+        <i class="fa-solid fa-circle-info info-icon" aria-hidden="true"></i>
+        <span>
+          Passwords must be at least 6 characters long.
+        </span>
+      </div>
+
+      <div class="register-group">
+        <label for="confirmPassword">Enter the new password again.</label>
+        <input
+          id="confirmPassword"
+          name="confirmPassword"
+          [type]="showPassword ? 'text' : 'password'"
+          [(ngModel)]="confirmPassword"
+          required
+          #confirm="ngModel"
+        />
+        <div class="field-messages">
+          @if ((confirm.touched || submitted) && (registerData.password !== confirmPassword)) {
+            <p class="field-error">Passwords do not match.</p>
+          }
+        </div>
+      </div>
+
+      <div class="register-actions">
+        <button type="submit">
+          <span>Check email</span>
+        </button>
+      </div>
+
+    </form>
+
+    <div class="register-footer">
+      <p>Are you already a customer?</p>
+      <button class="link" type="button" (click)="goToLogin()">Instead, log in.</button>
+    </div>
+
+  </div>
+</div>

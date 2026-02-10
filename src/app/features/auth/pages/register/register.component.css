@@ -1,0 +1,140 @@
+.register-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f6f7f8;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 24px;
+}
+
+.register-container {
+  width: 100%;
+  max-width: 520px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 28px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.register-title {
+  margin: 0 0 16px 0;
+  font-size: 20px;
+  color: #111;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.register-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.register-group label {
+  font-weight: 600;
+  font-size: 13px;
+  color: #111;
+}
+
+.register-group input {
+  height: 38px;
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: 1px solid #cfcfcf;
+  font-size: 14px;
+  outline: none;
+}
+
+.register-group input:focus {
+  border-color: #e77600;
+  box-shadow: 0 0 0 4px rgba(231,118,0,0.08);
+}
+
+.password-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.password-row input {
+  flex: 1 1 auto;
+}
+
+.toggle-pass {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+
+.password-info {
+  display: flex;
+  gap: 6px;
+  margin: 6px 0 10px;
+  font-size: 11px;
+  color: #555;
+}
+
+.info-icon {
+  color: #0073bb;
+  font-size: 14px;
+  margin-top: 1px;
+}
+
+.field-messages {
+  min-height: 18px;
+  margin-top: 4px;
+}
+
+.field-error {
+  margin: 0;
+  font-size: 12px;
+  color: #c40000;
+}
+
+.register-actions {
+  margin-top: 6px;
+}
+
+.register-actions button {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: none;
+  background: linear-gradient(#f7dfa5, #f0c14b);
+  color: #111;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.register-actions button[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.register-footer {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.register-footer .link {
+  background: none;
+  border: none;
+  color: #0071e3;
+  cursor: pointer;
+  font-weight: 600;
+}

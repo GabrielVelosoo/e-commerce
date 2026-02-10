@@ -1,0 +1,40 @@
+<div class="auth-page">
+  <div class="auth-container">
+
+    <div class="auth-title">
+      <h1> Sign in or create account </h1>
+    </div>
+
+    <form #form="ngForm" (ngSubmit)="continue(form)" class="email-form">
+
+      <div class="email-form-group">
+        <label for="email">Enter your e-mail</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          [(ngModel)]="checkEmailData.email"
+          required
+        />
+        <div class="email-validation-container">
+          @for(error of errors.errors; track $index) {
+            @if(error.field === 'email') {
+              <p class="email-validation-message">
+                <i class="fa-solid fa-exclamation-circle" aria-hidden="true"></i>
+                {{ error.message }}
+              </p>
+            }
+          }
+        </div>
+      </div>
+
+      <div class="email-form-button-group">
+        <button type="submit" [disabled]="!checkEmailData.email">
+            <span>Continue</span>
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
