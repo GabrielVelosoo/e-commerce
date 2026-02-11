@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterRequest } from '../../models/auth';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 @Component({
   standalone: false,
@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   registerData: RegisterRequest = new RegisterRequest();
   confirmPassword: string = '';
   showPassword: boolean = false;
+  passwordMessage: boolean = true;
   errors: Error = new Error();
   submitted = false;
 
@@ -35,6 +36,7 @@ export class RegisterComponent implements OnInit {
 
   register(form: NgForm) {
     this.submitted = true;
+    this.passwordMessage = false;
     this.errors = new Error();
     form.control.markAllAsTouched();
     if(form.invalid || this.registerData.password.length < 6 || this.registerData.password !== this.confirmPassword) {

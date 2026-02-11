@@ -16,7 +16,7 @@
       </div>
 
       <div class="register-group">
-        <label for="firstName">Your name</label>
+        <label for="firstName">First name</label>
         <input
           id="firstName"
           name="firstName"
@@ -28,7 +28,7 @@
       </div>
 
       <div class="register-group">
-        <label for="lastName">Your last name</label>
+        <label for="lastName">Last name</label>
         <input
           id="lastName"
           name="lastName"
@@ -53,17 +53,19 @@
             autocomplete="new-password"
           />
           <button type="button" class="toggle-pass" (click)="togglePassword()">
-            <i class="fa-solid" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+            <i class="fa-solid" [ngClass]="!showPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
           </button>
         </div>
       </div>
 
-      <div class="password-info">
-        <i class="fa-solid fa-circle-info info-icon" aria-hidden="true"></i>
-        <span>
-          Passwords must be at least 6 characters long.
-        </span>
-      </div>
+      @if(passwordMessage) {
+        <div class="password-info">
+          <i class="fa-solid fa-circle-info info-icon" aria-hidden="true"></i>
+          <span>
+            Passwords must be at least 6 characters long.
+          </span>
+        </div>
+      }
 
       <div class="register-group">
         <label for="confirmPassword">Enter the new password again.</label>
@@ -76,8 +78,11 @@
           #confirm="ngModel"
         />
         <div class="field-messages">
-          @if ((confirm.touched || submitted) && (registerData.password !== confirmPassword)) {
-            <p class="field-error">Passwords do not match.</p>
+          @if((confirm.touched || submitted) && (registerData.password !== confirmPassword)) {
+            <p class="field-error">
+              <i class="fa-solid fa-exclamation-circle" aria-hidden="true"></i>
+              Passwords do not match.
+            </p>
           }
         </div>
       </div>

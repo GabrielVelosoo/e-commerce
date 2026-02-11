@@ -57,25 +57,27 @@
 }
 
 .password-row {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
-  position: relative;
 }
 
 .password-row input {
-  flex: 1 1 auto;
+  width: 100%;
+  padding-right: 40px;
 }
 
 .toggle-pass {
+  position: absolute;
+  right: 10px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 6px;
-  display: inline-flex;
+  color: #666;
+  display: flex;
   align-items: center;
   justify-content: center;
-  color: #666;
+  height: 100%;
 }
 
 .password-info {
