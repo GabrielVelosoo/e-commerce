@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { RegisterRequest } from '../../models/auth';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { Error } from '../../../../shared/models/erro';
 
 @Component({
   standalone: false,
@@ -22,7 +23,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -38,10 +40,17 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
     this.passwordMessage = false;
     this.errors = new Error();
-    form.control.markAllAsTouched();
-    if(form.invalid || this.registerData.password.length < 6 || this.registerData.password !== this.confirmPassword) {
-      return;
-    }
+    this.authService.register(this.registerData)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (err) => {
+          this.errors = err.error ?? new Error();
+          console.log(this.errors);
+          try { this.cdr.detectChanges(); } catch (e) { /* noop */ }
+        }
+      });
   }
 
   goToLogin(): void {

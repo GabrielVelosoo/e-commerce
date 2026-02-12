@@ -4,6 +4,7 @@ import { EmailCheckComponent } from './pages/email-check/email-check.component';
 import { ConfirmRegisterComponent } from './pages/confirm-register/confirm-register.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
+import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'verify-email',
+    component: VerifyEmailComponent
   },
   {
     path: 'login',

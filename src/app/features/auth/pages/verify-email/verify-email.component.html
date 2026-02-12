@@ -1,0 +1,37 @@
+<div class="verify-container">
+  <div class="verify-card">
+
+    <h1>Check the email address.</h1>
+
+    <p class="description">
+      To verify your email, we sent a code to
+      <strong>fascias&#64;gmail.com</strong>
+      <a class="alter-link"> (Change)</a>
+    </p>
+
+    <form #verifyForm="ngForm">
+
+      <label for="code">Enter the security code.</label>
+
+      <input
+        id="code"
+        name="code"
+        type="text"
+        maxlength="6"
+        required
+      />
+
+      <button
+        type="submit"
+      >
+        Create your e-commerce account.
+      </button>
+
+    </form>
+
+    <a class="resend-link">
+      Resend code
+    </a>
+
+  </div>
+</div>

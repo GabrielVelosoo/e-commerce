@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ConfirmRegisterComponent } from './pages/confirm-register/confirm-register.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
+import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { LoginComponent } from './pages/login/login.component';
     EmailCheckComponent,
     ConfirmRegisterComponent,
     RegisterComponent,
+    VerifyEmailComponent,
     LoginComponent
   ],
   imports: [

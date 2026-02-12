@@ -13,6 +13,16 @@
           [(ngModel)]="registerData.email"
           required
         />
+        <div class="validation-container">
+          @for(error of errors.errors; track $index) {
+            @if(error.field === 'email') {
+              <p class="validation-message">
+                <i class="fa-solid fa-exclamation-circle" aria-hidden="true"></i>
+                {{ error.message }}
+              </p>
+            }
+          }
+        </div>
       </div>
 
       <div class="register-group">
@@ -25,6 +35,16 @@
           [(ngModel)]="registerData.firstName"
           required
         />
+        <div class="validation-container">
+          @for(error of errors.errors; track $index) {
+            @if(error.field === 'firstName') {
+              <p class="validation-message">
+                <i class="fa-solid fa-exclamation-circle" aria-hidden="true"></i>
+                {{ error.message }}
+              </p>
+            }
+          }
+        </div>
       </div>
 
       <div class="register-group">
@@ -37,6 +57,16 @@
           [(ngModel)]="registerData.lastName"
           required
         />
+        <div class="validation-container">
+          @for(error of errors.errors; track $index) {
+            @if(error.field === 'lastName') {
+              <p class="validation-message">
+                <i class="fa-solid fa-exclamation-circle" aria-hidden="true"></i>
+                {{ error.message }}
+              </p>
+            }
+          }
+        </div>
       </div>
 
       <div class="register-group">
@@ -55,6 +85,16 @@
           <button type="button" class="toggle-pass" (click)="togglePassword()">
             <i class="fa-solid" [ngClass]="!showPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
           </button>
+        </div>
+        <div class="validation-container">
+          @for(error of errors.errors; track $index) {
+            @if(error.field === 'password') {
+              <p class="validation-message">
+                <i class="fa-solid fa-exclamation-circle" aria-hidden="true"></i>
+                {{ error.message }}
+              </p>
+            }
+          }
         </div>
       </div>
 
@@ -75,10 +115,9 @@
           [type]="showPassword ? 'text' : 'password'"
           [(ngModel)]="confirmPassword"
           required
-          #confirm="ngModel"
         />
         <div class="field-messages">
-          @if((confirm.touched || submitted) && (registerData.password !== confirmPassword)) {
+          @if((registerData.password !== confirmPassword)) {
             <p class="field-error">
               <i class="fa-solid fa-exclamation-circle" aria-hidden="true"></i>
               Passwords do not match.
@@ -88,7 +127,7 @@
       </div>
 
       <div class="register-actions">
-        <button type="submit">
+        <button type="submit" [disabled]="registerData.password !== confirmPassword">
           <span>Check email</span>
         </button>
       </div>
