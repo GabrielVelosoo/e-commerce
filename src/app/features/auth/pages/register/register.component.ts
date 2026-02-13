@@ -42,8 +42,8 @@ export class RegisterComponent implements OnInit {
     this.errors = new Error();
     this.authService.register(this.registerData)
       .subscribe({
-        next: (res) => {
-          console.log(res);
+        next: () => {
+          this.router.navigate(['/auth/verify-email']).then();
         },
         error: (err) => {
           this.errors = err.error ?? new Error();
