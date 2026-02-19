@@ -5,11 +5,11 @@
 
     <p class="description">
       To verify your email, we sent a code to
-      <strong>fascias&#64;gmail.com</strong>
+      <strong>{{ email }}</strong>
       <a class="alter-link"> (Change)</a>
     </p>
 
-    <form #verifyForm="ngForm">
+    <form #form="ngForm" (ngSubmit)="verifyRegisterCode()">
 
       <label for="code">Enter the security code.</label>
 
@@ -19,6 +19,7 @@
         type="text"
         maxlength="6"
         required
+        [(ngModel)]="code"
       />
 
       <button

@@ -17,8 +17,11 @@ export class AuthService {
     return this.http.post<CheckEmailResponse>(`${this.baseUrl}/check-email`, { email });
   }
 
-  register(data: RegisterRequest): Observable<any> {
-    console.log(data);
-    return this.http.post<any>(`${this.baseUrl}/register/send-code`, data);
+  sendRegisterCode(data: RegisterRequest): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}/register/send-code`, data);
+  }
+
+  verifyRegisterCode(email: string, code: string): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}/register/verify-code`, { email, code });
   }
 }

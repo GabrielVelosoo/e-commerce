@@ -36,16 +36,16 @@ export class RegisterComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
-  register(form: NgForm) {
+  sendCode(form: NgForm): void {
     this.submitted = true;
     this.passwordMessage = false;
     this.errors = new Error();
-    this.authService.register(this.registerData)
+    this.authService.sendRegisterCode(this.registerData)
       .subscribe({
-        next: () => {
-          this.router.navigate(['/auth/verify-email']).then();
+        next: (): void => {
+          this.router.navigate(['/auth/verify-email'], { queryParams: { email: this.registerData.email } }).then();
         },
-        error: (err) => {
+        error: (err: any): void => {
           this.errors = err.error ?? new Error();
           console.log(this.errors);
           try { this.cdr.detectChanges(); } catch (e) { /* noop */ }
