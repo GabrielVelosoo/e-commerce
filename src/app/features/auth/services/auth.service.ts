@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {CheckEmailResponse, RegisterRequest} from '../models/auth';
+import { CheckEmailResponse, RegisterRequest } from '../models/auth';
 import { environment } from '../../../../environments/environment';
 
 @Injectable({
@@ -23,5 +23,9 @@ export class AuthService {
 
   verifyRegisterCode(email: string, code: string): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/register/verify-code`, { email, code });
+  }
+
+  resendRegisterCode(email: string): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}/register/resend-code`, { email });
   }
 }

@@ -39,6 +39,10 @@ export class EmailCheckComponent {
             this.router.navigate(['/auth/confirm-register'], { queryParams: { email: this.checkEmailData.email } }).then();
             return;
           }
+          if(res.exists && res.flow === 'LOGIN') {
+            this.router.navigate(['/auth/login'], { queryParams: { email: this.checkEmailData.email } }).then();
+            return;
+          }
         },
         error: (err) => {
           this.errors = err.error ?? new Error();

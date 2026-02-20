@@ -47,7 +47,6 @@ export class RegisterComponent implements OnInit {
         },
         error: (err: any): void => {
           this.errors = err.error ?? new Error();
-          console.log(this.errors);
           try { this.cdr.detectChanges(); } catch (e) { /* noop */ }
         }
       });

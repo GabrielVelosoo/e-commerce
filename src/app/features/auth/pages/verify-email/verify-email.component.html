@@ -6,7 +6,7 @@
     <p class="description">
       To verify your email, we sent a code to
       <strong>{{ email }}</strong>
-      <a class="alter-link"> (Change)</a>
+      <a class="alter-link" (click)="changeEmail()"> (Change)</a>
     </p>
 
     <form #form="ngForm" (ngSubmit)="verifyRegisterCode()">
@@ -22,6 +22,29 @@
         [(ngModel)]="code"
       />
 
+      <div class="validation-container">
+        @if(resendSuccessMessage) {
+          <p class="validation-success-message">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            We've sent a new code to your email.
+          </p>
+        }
+        @if(errors && errors.status === 400) {
+          <p class="validation-error-message">
+            <i class="fa-solid fa-exclamation-circle" aria-hidden="true"></i>
+            {{ errors.message }}
+          </p>
+        }
+        @for(error of errors.errors; track $index) {
+          @if(error.field === 'code') {
+            <p class="validation-error-message">
+              <i class="fa-solid fa-exclamation-circle" aria-hidden="true"></i>
+              {{ error.message }}
+            </p>
+          }
+        }
+      </div>
+
       <button
         type="submit"
       >
@@ -30,7 +53,7 @@
 
     </form>
 
-    <a class="resend-link">
+    <a class="resend-link" (click)="resendCode()">
       Resend code
     </a>
 

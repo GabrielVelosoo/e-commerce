@@ -126,6 +126,15 @@
         </div>
       </div>
 
+      <div class="validation-container">
+        @if(errors && errors.status === 429) {
+          <p class="validation-message">
+            <i class="fa-solid fa-exclamation-circle" aria-hidden="true"></i>
+            {{ errors.message }}
+          </p>
+        }
+      </div>
+
       <div class="register-actions">
         <button type="submit" [disabled]="registerData.password !== confirmPassword">
           <span>Check email</span>

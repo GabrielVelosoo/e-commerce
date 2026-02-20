@@ -11,7 +11,10 @@ export class ConfirmRegisterComponent {
 
   email: string = '';
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     const qEmail =  this.route.snapshot.queryParamMap.get('email');
     this.email = qEmail ?? (history?.state?.email ?? '');
   }
